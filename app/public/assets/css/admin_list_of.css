@@ -1,0 +1,28 @@
+body{
+    direction: rtl;
+    max-width: 100%;
+    text-align: center;
+}
+.navbar{
+    background-color: #c5c3c3;   
+   
+}
+input{
+    border-radius: 100px;
+}
+.planets_img{
+    max-width: 250px;
+    max-height: 160px;
+}
+
+@media screen and (min-width: 1024px) {
+    .planets_img{
+        margin-right: 15%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .planets_img{
+        margin-right: 10%;
+    }
+}

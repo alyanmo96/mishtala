@@ -1,0 +1,9 @@
+body{
+    direction: rtl;
+    max-width: 100%;
+    text-align: center;
+}
+.navbar{
+    background-color: #c5c3c3;   
+   
+}

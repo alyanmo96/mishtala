@@ -1,0 +1,32 @@
+body{
+    direction: rtl;
+    max-width: 100%;
+    text-align: center;
+}
+#main_title{
+    font-family: "Times New Roman", Times, serif;
+}
+@media (min-width: 768px){
+    .mr-md-auto, .mx-md-auto {
+        margin-right: 0; 
+    }
+}
+.main_page_img_on_title{
+    max-height: 100px;
+    max-width: 100%;
+    border-radius: 100px;
+    text-align: center;
+}
+.show_random_products{
+    margin-top: 2%;
+    margin-left: 0;
+    margin-right: 0;
+}
+@media (max-width: 700px){
+    .top_imgs{
+        display: none;
+    }
+} 
+a{
+    font-size: xx-large;
+} 
