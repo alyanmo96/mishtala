@@ -6,6 +6,7 @@ use App\Models\gift;
 use App\Models\work_equipment;
 use App\Models\Cart;
 use App\Models\Box_photo_sell;
+use App\Models\grass;
 
 class CartController extends Controller
 {
@@ -54,6 +55,19 @@ class CartController extends Controller
             session()->put('cart',$cart);
             return redirect()->route('main.show')->with('success','הוסף בהצלחה');
         }
+        
+    //////////////////////////////////////////////////////////////////////////
+    public function add_item_back_to_grass(grass $product)
+    {
+        if(session()->has('cart')){
+            $cart = new Cart(session()->get('cart'));
+        }else{
+            $cart = new Cart();
+        }
+        $cart->add($product);
+        session()->put('cart',$cart);
+        return redirect()->route('grass.show')->with('success','הוסף בהצלחה');
+    }    
     //////////////////////////////////////////////////////////////////////////
     public function add_item_back_to_main_w(work_equipment $product)
     {
