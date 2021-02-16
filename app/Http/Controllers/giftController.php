@@ -112,6 +112,9 @@ class giftController extends Controller
         $gift = gift::find($id);
         $gift->delete();
         return redirect('/gift_edit');
-    
+    }
+    public function edit_special_gift_by_admin($id){     
+        $gift = gift::where('id', '=', $id)->first();
+        return view('edit_gift_by_admin',['planet'=>$gift]);
     }
 }

@@ -41,6 +41,7 @@ class box extends Controller
         $new_box->name=$request->input('name');
         $new_box->description=$request->input('description');
         $new_box->price=$request->input('price');
+        $new_box->type=$request->input('type');
         if($request->hasFile('image')){
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
@@ -66,6 +67,28 @@ class box extends Controller
         //
         $boxs = Box_photo_sell::all();
         return view('admin_list_of_box',['box'=>$boxs]);
+    }
+    
+    public function show_for_customers_box_one()
+    {
+        //
+        $boxs = Box_photo_sell::all();
+        $type=1;
+        return view('list_type_box',['box'=>$boxs,'type'=>$type]);
+    }
+    public function show_for_customers_box_two()
+    {
+        //
+        $boxs = Box_photo_sell::all();
+        $type=2;
+        return view('list_type_box',['box'=>$boxs,'type'=>$type]);
+    }
+    public function show_for_customers_box_three()
+    {
+        //
+        $boxs = Box_photo_sell::all();
+        $type=3;
+        return view('list_type_box',['box'=>$boxs,'type'=>$type]);
     }
 
     /**
@@ -109,5 +132,11 @@ class box extends Controller
 
         $boxs = Box_photo_sell::all();
         return view('list_of_boxs',['box'=>$boxs]);
+    }
+    
+    
+    public function edit_special_product_by_admin($id){     
+        $Box_photo_sell = Box_photo_sell::where('id', '=', $id)->first();
+        return view('edit_box_by_admin',['planet'=>$Box_photo_sell]);
     }
 }

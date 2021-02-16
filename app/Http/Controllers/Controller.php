@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller as BaseController;
 use App\Models\Plant;
 use App\Models\gift;
 use App\Models\Cart;
+use App\Models\grass;
 use App\Models\work_equipment;
 use App\Models\purchase;
 use Session;
@@ -21,9 +22,10 @@ class Controller extends BaseController
     {
         $planets = Plant::all();
         $gifts = gift::all();
-        $work_equipments = work_equipment::all();    
+        $work_equipments = work_equipment::all();   
+        $grasses = grass::all();    
             
-        return view('main',['planet'=>$planets,'work_equipment'=>$work_equipments,'gift'=>$gifts]);
+        return view('main',['planet'=>$planets,'work_equipment'=>$work_equipments,'gift'=>$gifts,'grass'=>$grasses]);
     }
 
     public function add_to_customer_cart(REQUEST $request, $id)
@@ -65,7 +67,7 @@ class Controller extends BaseController
         $Purchase->cart=$json;
         $Purchase->save();
         session()->forget('cart', 'default');
-        return redirect()->route('main.show')->with('purchase_success','הקנייה בוצעה בהצלחה');  
+        return redirect()->route('main.show')->with('purchase_success','הקנייה בוצעה בהצלחה, שירות לקוחות יחזרו אליך');  
     }
 
     public function people_buy_page_admin()
@@ -108,7 +110,11 @@ class Controller extends BaseController
         }elseif(work_equipment::where($column , '=', $request->input('search'))->first()){
             $work_equipment=work_equipment::where($column , '=', $request->input('search'))->first();
             return view('search_page',['product'=>$work_equipment]);
-        }else{
+        }elseif(grass::where($column , '=', $request->input('search'))->first()){
+            $grass=grass::where($column , '=', $request->input('search'))->first();
+            return view('search_page',['product'=>$grass]);
+        }
+        else{
            return redirect()->route('main.show')->with('nothing_to_show','אין מוצר כזה');  
         }
     }

@@ -105,6 +105,30 @@ class PlantController extends Controller
         $type=4;
         return view('list_type_plant',['plant'=>$plants,'type'=>$type]);
     }
+    
+    public function show_for_customers_five()
+    {
+        //
+        $plants = Plant::all();
+        $type=5;
+        return view('list_type_plant',['plant'=>$plants,'type'=>$type]);
+    }
+
+    public function show_for_customers_six()
+    {
+        //
+        $plants = Plant::all();
+        $type=6;
+        return view('list_type_plant',['plant'=>$plants,'type'=>$type]);
+    }
+
+    public function show_for_customers_seven()
+    {
+        //
+        $plants = Plant::all();
+        $type=7;
+        return view('list_type_plant',['plant'=>$plants,'type'=>$type]);
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -140,4 +164,9 @@ class PlantController extends Controller
         $plant->delete();
         return redirect('/plant_edit');    
     }
+     public function edit_special_product_by_admin($id){     
+        $plants = Plant::where('id', '=', $id)->first();
+        return view('edit_product_by_admin',['planet'=>$plants]);
+    }
+
 }

@@ -114,4 +114,9 @@ class work_equipmentController extends Controller
         $work_equipment->delete();
         return redirect('/work_equipment_edit');
     }
+    
+     public function edit_special_work_equipment_by_admin($id){     
+        $work_equipment = work_equipment::where('id', '=', $id)->first();
+        return view('edit_work_equipment_by_admin',['planet'=>$work_equipment]);
+    }
 }
